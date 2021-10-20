@@ -14,10 +14,26 @@ namespace times_tables
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Which times table do you want to see?");
-            string input = Console.ReadLine();
-            int inputNumber = Convert.ToInt32(input);
-            Multiplier(inputNumber);
+            bool doAgain = true;
+            while (doAgain == true)
+            {            
+                Console.WriteLine("Which times table do you want to see? Type in a number, or type E to end program.");
+                string input = Console.ReadLine();
+                if(int.TryParse(input, out int inputNumber))
+                {
+                    Multiplier(inputNumber);
+                }
+
+                else if (input == "E" || input == "e")
+                {
+                    doAgain = false;
+                }
+
+                else
+                {
+                    Console.WriteLine("We didn't quite get that!");
+                }
+            }
 
         }
     }
